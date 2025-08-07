@@ -238,7 +238,7 @@
     }
     #cart button {
       margin-top: 1rem;
-      background: #3b82f6;
+      background: #10b981; /* Green for Add Address to Continue */
       color: white;
       width: 100%;
       padding: 0.8rem;
@@ -247,7 +247,7 @@
       transition: background 0.3s ease, transform 0.3s ease;
     }
     #cart button:hover {
-      background: #1e3a8a;
+      background: #059669;
       transform: translateY(-2px);
     }
     #productModal, #addressModal {
@@ -287,7 +287,7 @@
     }
     .modal-content button {
       margin-top: 1rem;
-      background: #3b82f6;
+      background: #3b82f6; /* Blue for Proceed to Pay Now */
       color: white;
       padding: 0.8rem 1.5rem;
       border-radius: 8px;
@@ -322,7 +322,6 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    /* Mobile Responsiveness */
     @media (max-width: 768px) {
       .hero h1 {
         font-size: 2rem;
@@ -453,7 +452,7 @@
     <h3>Your Cart</h3>
     <ul id="cartItems"></ul>
     <p class="total">Total: ₹<span id="totalPrice">0</span></p>
-    <button onclick="showAddressModal()">Pay Now</button>
+    <button onclick="showAddressModal()">Add Address to Continue</button>
   </div>
 
   <div id="productModal">
@@ -477,7 +476,7 @@
         <input type="text" id="postalCode" placeholder="Postal Code" required aria-label="Postal Code" />
         <input type="tel" id="phone" placeholder="Phone Number" required aria-label="Phone Number" />
         <p id="addressError">Please fill in all address fields.</p>
-        <button type="submit" onclick="payNow()">Pay Now</button>
+        <button type="submit" onclick="payNow()">Proceed to Pay Now</button>
       </form>
     </div>
   </div>
@@ -537,7 +536,6 @@
 
       cartCount.textContent = count;
       totalPrice.textContent = total;
-      // Cart visibility controlled only by toggleCart, not auto-shown
     }
 
     function toggleCart() {
@@ -599,7 +597,7 @@
         handler: function (response) {
           localStorage.removeItem('cart');
           localStorage.removeItem('lastOrderAddress');
-          window.location.href = 'thankyou.html';
+          alert('Payment successful! Thank you for your order.');
         },
         prefill: {
           name: address.name,
@@ -644,6 +642,11 @@
         const productCategory = product.getAttribute('data-category');
         product.style.display = category === 'all' || productCategory === category ? 'block' : 'none';
       });
+    }
+
+    function toggleMenu() {
+      const navMenu = document.getElementById('navMenu');
+      navMenu.classList.toggle('active');
     }
 
     window.onclick = function (event) {
