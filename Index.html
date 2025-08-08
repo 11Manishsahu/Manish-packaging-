@@ -645,28 +645,4 @@
     }
 
     function toggleMenu() {
-      const navMenu = document.getElementById('navMenu');
-      navMenu.classList.toggle('active');
-    }
-
-    window.onclick = function (event) {
-      const productModal = document.getElementById('productModal');
-      const addressModal = document.getElementById('addressModal');
-      if (event.target === productModal) {
-        productModal.style.display = 'none';
-      }
-      if (event.target === addressModal) {
-        addressModal.style.display = 'none';
-      }
-    };
-
-    document.getElementById('contactForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      alert('Thank you for your message! We will get back to you soon.');
-      this.reset();
-    });
-
-    window.onload = loadCart;
-  </script>
-</body>
-</html>
+      const navMenu = document.getE
